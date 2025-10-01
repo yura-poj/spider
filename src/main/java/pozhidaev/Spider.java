@@ -41,7 +41,7 @@ public class Spider {
                 System.out.println("Submitting " + path);
                 HttpRequest req = HttpRequest.newBuilder()
                         .uri(URI.create(baseUrl + "/" + path))
-                        .timeout(Duration.ofSeconds(20))
+                        .timeout(Duration.ofSeconds(12))
                         .GET()
                         .build();
 
@@ -74,7 +74,7 @@ public class Spider {
         }
     }
 
-    public List<String> sortedMessages() {
+    private List<String> sortedMessages() {
         List<String> sorted;
         synchronized (messages) {
             sorted = new ArrayList<>(messages);
