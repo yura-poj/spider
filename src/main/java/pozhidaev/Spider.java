@@ -29,6 +29,7 @@ public class Spider {
     }
 
     public List<String> start() {
+        System.out.println("Started Spider");
         submit("");
         phaser.arriveAndAwaitAdvance();
         return sortedMessages();
@@ -64,6 +65,7 @@ public class Spider {
             JsonNode root = mapper.readTree(body);
             String msg = root.get("message").asText();
             messages.add(msg);
+            System.out.println("Message added");
 
             JsonNode successors = root.withArray("successors");
             for (JsonNode node : successors) {
